@@ -50,7 +50,6 @@ function renderPage(template, data, HTMLelement, callback) {
 				document.getElementById(HTMLelement).innerHTML += card; // append output with cards
 				callback(data[i]); // callback for each card data
 			}
-			setMetaCustomer(metacustomer); setMetaProduct(metaproduct); setMetaSale(metasale);
 		},
 		error	: function() {
 			document.getElementById(HTMLelement).innerHTML = "Error rendering page";
