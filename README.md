@@ -29,7 +29,7 @@ Depending upon the JSON dataset, the UI renders repetitive patterns of the HTML 
 ## Installation:
 - Include piperUI in your client-side UI (HTML/ASP/PHP file). 
 ```
-<script type="text/javascript" src="/scripts/piperUI.js"></script>
+<script type="text/javascript" src="`<path>`/piperUI.js"></script>
 ```
 
 - Specify the path to your HTML templates 
@@ -39,11 +39,72 @@ var piperUI_template_path = "/";	/*  <== USER DEFINED  */
 
 
 ## HTML Templates:
+Create your template the same way as you would create any html file. The benefit with this approach is that you can use a standard editor and pretty formats to make your file readable.
+
+The only difference is that you can use variables that are replaced with values on the fly. The variables are placed within pipes - `||variable||`. Just follow these rules:
+
+- Make sure there are no spaces within pipes and variable names
+- The variable names must match the data keys
+- The data supplied to the piper rendering function must be JSON
+- The supplied data must not contain duplicate key names
+
+PiperUI supports 2 kinds of HTML templates:
+### Repeating Templates
+These templates are small parts of a larger page that repeat themselves. An example would be a contact list where contact information such as Name, Telephone and email are displayed for multiple contacts. In this example, a template would prepare the layout of one contact and the PiperUI rendering function will repeat the template at runtime to display all contacts using the same template.
+
+#### Usage Example
+*HTML Template (`contact.html`)*
+```
+<div>
+	<span class='label'>Name:</span> 	&emsp; <span class='data'>*||fname|| ||lname||*</span>
+	<span class='label'>Email:</span> 	&emsp; <span class='data'>*||emailid||*</span>
+	<span class='label'>Phone:</span> 	&emsp; <span class='data'>*||phone||*</span>
+</div>
+```
+
+*Data (`contact.json`)*
+```
+	[{
+		"name": {
+			"fname": "John",
+			"lname": "Doe"
+		},
+		"emailid": "john.doe@example.com",
+		"phone": "123-123-1234"	
+	 },
+	{
+		"name": {
+			"fname": "Jane",
+			"lname": "Doe"
+		},
+		"emailid": "jane.doe@example.com",
+		"phone": "999-111-9876"	
+	}]
+```
+
+*`renderPage(template, json.data, html_dom_element, callback)` function*
+```
+  renderPage('contact', contact.json, 'contactlist', function(){ });
+```
+The *`contactlist`* is an HTML DOM element, such as `<div id=*`'contactlist'`*></div>`
 
 
-## Usage Example: renderPage(): 
+### Static Templates
+This is a non-repeating static template and is typically useul when an entire page is created as a template. An example would be a page header and/or footer that would be created just once and used on each page displayed to the user. There is no data involved in this type of template. 
 
+#### Usage Example 
+*HTML Template (`headertemplate.html`)*
+```
+<div>
+	<img src="logo.jpg">
+	...
+	...
+</div>
+```
 
-## Usage Example: renderStaticPage(): 
-
+*`renderStaticPage(template, html_dom_element, callback)` function*
+```
+  renderStaticPage('headertemplate', 'header', function(){ });
+```
+The *`header`* is an HTML DOM element, such as `<header id=*`'header'`*></header>`
 
