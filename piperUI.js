@@ -6,7 +6,7 @@ Email: mppise@gmail.com
 
 LICENSE:
 `````````
-The code in this module (Mango) is protected by GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+The code in this utility (piperUI) is protected by GNU GENERAL PUBLIC LICENSE Version 2, June 1991
 See LICENSE.TXT file for full license.
 
 README:
