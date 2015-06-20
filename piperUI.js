@@ -19,10 +19,6 @@ VERSION:
 
 ``````````````````````````````````````````````````````````````````````````````````````````````` */
 
-/* Specify the path to your HTML templates */
-var piperUI_template_path = "/";	/*<== USER DEFINED*/
-
-
 /*	To render the templete with the provided data (JSON format) 
 	and update the HTMLelement */
 function renderPage(template, data, HTMLelement, callback) {
@@ -30,8 +26,8 @@ function renderPage(template, data, HTMLelement, callback) {
 		type	: "GET",
 		url 	: piperUI_template_path + template,
 		success : function(resp) {
-			var template = resp.html;
-			document.getElementById(HTMLelement).innerHTML = ""; // clear the output area first
+			var template = resp;
+			document.getElementById(HTMLelement).innerHTML = "... loading ..."; // clear the output area first
 			for(var i=0; i<data.length; i++)
 			{
 				var card = template;
