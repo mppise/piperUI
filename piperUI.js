@@ -24,7 +24,7 @@ VERSION:
 function renderPage(template, data, HTMLelement, callback) {
 	$.ajax({
 		type	: "GET",
-		url 	: piperUI_template_path + template,
+		url 	: template + ".html",
 		success : function(resp) {
 			var template = resp;
 			document.getElementById(HTMLelement).innerHTML = "... loading ..."; // clear the output area first
@@ -59,7 +59,7 @@ function renderPage(template, data, HTMLelement, callback) {
 function renderStaticPage(template, HTMLelement, callback) {
 	$.ajax({
 		type	: "GET",
-		url		: piperUI_template_path + template,
+		url		: url 	: template + ".html",
 		success	: function(html) {
 			document.getElementById(HTMLelement).innerHTML = html.html;
 		},
