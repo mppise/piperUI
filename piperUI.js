@@ -59,7 +59,7 @@ function renderPage(template, data, HTMLelement, callback) {
 function renderStaticPage(template, HTMLelement, callback) {
 	$.ajax({
 		type	: "GET",
-		url		: url 	: template + ".html",
+		url 	: template + ".html",
 		success	: function(html) {
 			document.getElementById(HTMLelement).innerHTML = html.html;
 		},

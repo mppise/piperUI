@@ -32,12 +32,6 @@ Depending upon the JSON dataset, the UI renders repetitive patterns of the HTML 
 <script type="text/javascript" src="<path>/piperUI.js"></script>
 ```
 
-- Specify the path to your HTML templates 
-```
-var piperUI_template_path = "/";	/*  <== USER DEFINED  */
-```
-
-
 ## Render Functions
 As mentioned above, there are 2 render functions described in detail below:
 
